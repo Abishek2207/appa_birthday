@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Appa</title>
+    <meta
+      name="description"
+      content="A cinematic birthday surprise website for Appa, filled with animated memories, heartfelt words, and a premium celebration experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="is-locked">
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+    <div class="noise-layer" aria-hidden="true"></div>
+    <div class="starfield" id="starfield" aria-hidden="true"></div>
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+    <section class="intro-screen" id="introScreen" aria-label="Birthday surprise entry">
+      <div class="intro-orb intro-orb-one"></div>
+      <div class="intro-orb intro-orb-two"></div>
+
+      <div class="intro-panel">
+        <p class="eyebrow">A Curated Birthday Surprise</p>
+        <h2 class="intro-title">
+          Before the birthday wish appears, a beautiful surprise is waiting.
+        </h2>
+        <p class="intro-copy">
+          This experience has been designed with admiration, gratitude, and love
+          for a father whose presence gives warmth, dignity, and strength to home.
+        </p>
+
+        <div class="intro-actions">
+          <button class="button primary intro-trigger" type="button" data-target="hero">
+            Unseal The Birthday Surprise
+          </button>
+          <button class="button secondary intro-trigger" type="button" data-target="gallery">
+            Enter The Memory Gallery
+          </button>
+        </div>
+
+        <p class="intro-footnote">Choose a path. Both lead to Appa.</p>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+      <div class="ambient ambient-three"></div>
+
+      <header class="hero" id="hero">
+        <nav class="topbar">
+          <span class="brand">The Birthday Surprise Edition</span>
+          <span class="day-badge" id="todayBadge"></span>
+        </nav>
+
+        <section class="hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">For Our Appa</p>
+            <h1 class="hero-title">
+              Happy Birthday Appa <span class="emoji-line">🫶🌍🫂</span>
+            </h1>
+            <p class="lead">
+              Today is not simply a birthday. It is a celebration of the man
+              whose devotion has quietly become the foundation of family, memory,
+              and belonging.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button primary" href="#letter">Read The Birthday Tribute</a>
+              <a class="button secondary" href="#gallery">See The Animated Memories</a>
+            </div>
+
+            <div class="hero-quote">
+              <strong>For the man who made ordinary days feel secure.</strong>
+              <p>
+                Your love has never been loud, yet it has always been powerful
+                enough to shape every beautiful part of our lives.
+              </p>
+            </div>
+
+            <div class="honor-ribbon reveal delay-1">
+              <article class="honor-item">
+                <span>Presence</span>
+                <strong>Steady</strong>
+              </article>
+              <article class="honor-item">
+                <span>Love</span>
+                <strong>Unshaken</strong>
+              </article>
+              <article class="honor-item">
+                <span>Legacy</span>
+                <strong>Enduring</strong>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-stage reveal delay-1">
+            <div class="stage-panel stage-main">
+              <img
+                src="assets/appa-image-5.jpeg"
+                alt="Appa standing confidently in a blue shirt"
+              />
+              <div class="stage-caption">
+                <span>Present Day Portrait</span>
+                <p>Quiet confidence. Warm presence. Unmistakably Appa.</p>
+              </div>
+            </div>
+
+            <div class="stage-panel stage-side stage-side-top">
+              <img
+                src="assets/appa-image-1.jpeg"
+                alt="A birthday cake moment shared with Appa"
+              />
+            </div>
+
+            <div class="stage-panel stage-side stage-side-bottom">
+              <img
+                src="assets/appa-image-3.jpeg"
+                alt="Appa seated by the seaside with family"
+              />
+            </div>
+          </div>
+        </section>
+      </header>
+
+      <main>
+        <section class="section marquee-section reveal" aria-label="Animated photo ribbon">
+          <div class="section-head">
+            <p class="eyebrow">Moving Through Memories</p>
+            <h2>Seven treasured frames, carried across the screen like a celebration reel</h2>
+          </div>
+
+          <div class="marquee-shell">
+            <div class="marquee-track">
+              <figure class="marquee-card"><img src="assets/appa-image-1.jpeg" alt="Birthday memory with Appa" /></figure>
+              <figure class="marquee-card"><img src="assets/appa-image-2.jpeg" alt="Appa smiling during a birthday moment" /></figure>
+              <figure class="marquee-card"><img src="assets/appa-image-3.jpeg" alt="Appa with family by the sea" /></figure>
+              <figure class="marquee-card"><img src="assets/appa-image-4.jpeg" alt="A cherished older family photograph" /></figure>
+              <figure class="marquee-card"><img src="assets/appa-image-5.jpeg" alt="Portrait of Appa in a blue shirt" /></figure>
+              <figure class="marquee-card"><img src="assets/appa-image-6.jpeg" alt="Appa standing near patterned curtains" /></figure>
+              <figure class="marquee-card"><img src="assets/appa-image-7.jpeg" alt="Appa smiling gently indoors" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-1.jpeg" alt="" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-2.jpeg" alt="" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-3.jpeg" alt="" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-4.jpeg" alt="" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-5.jpeg" alt="" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-6.jpeg" alt="" /></figure>
+              <figure class="marquee-card" aria-hidden="true"><img src="assets/appa-image-7.jpeg" alt="" /></figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="section tribute reveal">
+          <div class="section-head">
+            <p class="eyebrow">Why You Are Loved</p>
+            <h2>A father remembered not only for what he did, but for who he is</h2>
+          </div>
+
+          <div class="tribute-grid">
+            <article class="tribute-card">
+              <span>01</span>
+              <h3>Steadfast Character</h3>
+              <p>You carry responsibility with dignity and make your family feel protected without ever asking for recognition.</p>
+            </article>
+            <article class="tribute-card">
+              <span>02</span>
+              <h3>Quiet Sacrifice</h3>
+              <p>Behind every comfort and every milestone stands the depth of your effort, patience, and unwavering care.</p>
+            </article>
+            <article class="tribute-card">
+              <span>03</span>
+              <h3>Enduring Influence</h3>
+              <p>The values you live by continue to guide your family with grace, humility, and strength.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section legacy-section reveal">
+          <div class="legacy-layout">
+            <div class="legacy-copy">
+              <p class="eyebrow">A Life Of Meaning</p>
+              <h2>A father whose character became the standard for home, effort, and love</h2>
+              <p class="legacy-lead">
+                Some people create memories. Appa creates stability, belonging,
+                and the kind of love that quietly becomes the centre of a family.
+              </p>
+            </div>
+
+            <div class="legacy-stack">
+              <article class="legacy-card legacy-card-large">
+                <span>What remains unforgettable</span>
+                <h3>His calm strength in every season of life</h3>
+                <p>Through celebration, responsibility, and ordinary days, Appa carries himself with a sincerity that leaves a lasting mark on everyone around him.</p>
+              </article>
+              <article class="legacy-card">
+                <span>What family feels</span>
+                <p>Safety, respect, and warmth. Not because it is spoken often, but because it has always been lived fully.</p>
+              </article>
+              <article class="legacy-card">
+                <span>What this day honours</span>
+                <p>Not only a birthday, but a remarkable man whose love continues to shape the story of his family.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section promise-note reveal">
+          <div class="promise-shell">
+            <div class="promise-intro">
+              <p class="eyebrow">A Son's Promise</p>
+              <h2>Not just a birthday wish, but the future I dream of building for you and Mummy</h2>
+            </div>
+
+            <div class="dream-grid">
+              <article class="dream-card">
+                <span>01</span>
+                <h3>Rest Without Worry</h3>
+                <p>One day, I want you to leave the burden of work behind and live in complete comfort, peace, and dignity.</p>
+              </article>
+              <article class="dream-card">
+                <span>02</span>
+                <h3>A Home Built With Love</h3>
+                <p>I dream of building a beautiful home where you and Mummy can simply rest, smile, and enjoy life together.</p>
+              </article>
+              <article class="dream-card">
+                <span>03</span>
+                <h3>Happiness First</h3>
+                <p>More than money, property, or status, my biggest goal is to see both of you happy every single day.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section gallery-section reveal" id="gallery">
+          <div class="section-head">
+            <p class="eyebrow">The Memory Gallery</p>
+            <h2>Every photograph becomes a chapter in the story of Appa</h2>
+          </div>
+
+          <div class="memory-grid">
+            <figure class="memory-card memory-card-tall" data-tilt-card data-lightbox-trigger data-caption="A tender birthday moment, full of affection and celebration.">
+              <img src="assets/appa-image-1.jpeg" alt="A birthday cake moment shared with Appa" loading="eager" />
+              <figcaption><span>Birthday Joy</span><p>A moment where affection and celebration meet.</p></figcaption>
+            </figure>
+            <figure class="memory-card" data-tilt-card data-lightbox-trigger data-caption="A candid smile beside Appa, capturing the warmth of family.">
+              <img src="assets/appa-image-2.jpeg" alt="Appa smiling during a birthday moment" loading="lazy" />
+              <figcaption><span>Shared Laughter</span><p>The kind of joy that only family can create.</p></figcaption>
+            </figure>
+            <figure class="memory-card memory-card-wide" data-tilt-card data-lightbox-trigger data-caption="Appa by the sea, surrounded by calm light and family presence.">
+              <img src="assets/appa-image-3.jpeg" alt="Appa with family by the sea" loading="lazy" />
+              <figcaption><span>Seaside Calm</span><p>Grace, quiet composure, and a beautiful day together.</p></figcaption>
+            </figure>
+            <figure class="memory-card" data-tilt-card data-lightbox-trigger data-caption="A precious older portrait that carries the tenderness of family beginnings.">
+              <img src="assets/appa-image-4.jpeg" alt="A cherished older family photograph" loading="lazy" />
+              <figcaption><span>Early Love</span><p>An heirloom memory that feels timeless.</p></figcaption>
+            </figure>
+            <figure class="memory-card" data-tilt-card data-lightbox-trigger data-caption="A strong portrait of Appa, standing with calm confidence.">
+              <img src="assets/appa-image-5.jpeg" alt="Portrait of Appa in a blue shirt" loading="lazy" />
+              <figcaption><span>Strength In Simplicity</span><p>The presence that makes every room feel steadier.</p></figcaption>
+            </figure>
+            <figure class="memory-card memory-card-tall" data-tilt-card data-lightbox-trigger data-caption="A portrait filled with dignity, warmth, and quiet stillness.">
+              <img src="assets/appa-image-6.jpeg" alt="Appa standing near patterned curtains" loading="lazy" />
+              <figcaption><span>Graceful Stillness</span><p>A portrait with calmness written into every detail.</p></figcaption>
+            </figure>
+            <figure class="memory-card" data-tilt-card data-lightbox-trigger data-caption="A gentle smile that carries familiarity, warmth, and home.">
+              <img src="assets/appa-image-7.jpeg" alt="Appa smiling gently indoors" loading="lazy" />
+              <figcaption><span>Warm Familiarity</span><p>The smile that turns a house into home.</p></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section letter reveal" id="letter">
+          <div class="letter-panel">
+            <p class="eyebrow">A Birthday Tribute</p>
+            <h2>To Appa, with all the love I do not say every day</h2>
+            <p>
+              Dear Appa, Happy Birthday. I may not speak to you every day, and
+              sometimes it may look as if I do not show enough care or love. But
+              that is never because you mean less to me. I know you carry work,
+              responsibility, and many burdens, so many times I stay silent even
+              when my heart is full.
+            </p>
+            <p>
+              You are one of my greatest happinesses in life, even though I have
+              not told you that enough. From my childhood itself, whenever I asked
+              for something, you and Mummy tried your best to give it to me. Even
+              when money was not there at the right time, later, when it became
+              possible, you still bought it for me. In my life, I have asked for
+              many things, and you have given me more than I could ever measure.
+            </p>
+            <p>
+              If I get angry now and then, it is not because I do not value you.
+              My mind is under pressure from projects, studies, friends, and many
+              thoughts I do not always know how to carry. I have never lived away
+              from home in a hostel, so sometimes my stress stays inside the house
+              and comes out as anger. But behind all of that, Appa, there is only love.
+            </p>
+            <p>
+              I have a dream for the future. After I begin earning, I do not want
+              you to sit in the shop at Akshaya Traders every day. I want you to
+              give it on rent and live peacefully. I do not want your property for
+              myself. That is your property, and it is our family's dignity. I have
+              a different mindset. I want to build my own life, and I want everything
+              to go to Akshaya.
+            </p>
+            <p>
+              My dream is simple in my heart, even if it looks grand in words: I
+              want you and Mummy to rest, sleep peacefully, watch television without
+              worry, and live in a beautiful big home built by me. I imagine a place
+              with open space, a farm, animals, birds, comfort, security, and every
+              facility that makes life easy. I want technology to serve you, not tire
+              you. I want you both to enjoy life with dignity, safety, and happiness.
+            </p>
+            <p>
+              More than all of that, I want you to know this: the biggest gift in my
+              life is not money, not wealth, and not comfort. It is you and Mummy.
+              You paid for my life from school to college and made me able to stand
+              in this world. That is the greatest blessing I could ever receive. I am
+              the luckiest child in the world, not because I am rich, but because I
+              have parents like you.
+            </p>
+            <p class="signature">I love you, Appa. Anyway, Happy Birthday Daddy 🌍🫂</p>
+          </div>
+        </section>
+
+        <section class="section video-surprise reveal" id="video-surprise">
+          <div class="video-shell">
+            <div class="video-copy">
+              <p class="eyebrow">Here One Surprise...</p>
+              <h2>One more gift is waiting below</h2>
+              <p>
+                This final reveal is reserved for a personal video surprise made with love for Appa.
+              </p>
+            </div>
+
+            <div class="video-actions">
+              <button class="button primary" id="videoRevealButton" type="button">
+                Open The Final Surprise
+              </button>
+            </div>
+
+            <div class="video-frame" id="videoFrame" hidden>
+              <video id="surpriseVideo" controls preload="metadata" playsinline>
+                <source src="assets/appa-surprise-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-fallback" id="videoFallback" hidden>
+                Add your video as <code>assets/appa-surprise-video.mp4</code> and this section will play it.
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer reveal">
+        <p>Crafted as a heartfelt surprise for Appa, with motion, memory, and love.</p>
+      </footer>
+    </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image preview">
+        Close
+      </button>
+      <figure class="lightbox-figure">
+        <img id="lightboxImage" src="" alt="" />
+        <figcaption id="lightboxCaption"></figcaption>
+      </figure>
+    </div>
+
+    <script src="script-v2.js"></script>
+  </body>
+</html>
