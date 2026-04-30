@@ -81,6 +81,7 @@ a {
 
 .aurora-field {
   position: fixed;
+  contain: strict;
   inset: -18vh -12vw;
   z-index: 0;
   overflow: hidden;
@@ -95,7 +96,7 @@ a {
   width: 124%;
   height: 22vh;
   border-radius: 50%;
-  filter: blur(30px);
+  filter: blur(18px);
   transform: rotate(-8deg);
   animation: auroraWave 16s ease-in-out infinite alternate;
 }
@@ -157,7 +158,7 @@ a {
 .ambient {
   position: fixed;
   border-radius: 999px;
-  filter: blur(16px);
+  filter: blur(10px);
   opacity: 0.55;
   pointer-events: none;
 }
@@ -208,7 +209,7 @@ a {
 .intro-orb {
   position: absolute;
   border-radius: 999px;
-  filter: blur(12px);
+  filter: blur(8px);
   opacity: 0.9;
   animation: drift 9s ease-in-out infinite alternate;
 }
@@ -240,7 +241,7 @@ a {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
     rgba(9, 19, 34, 0.72);
-  backdrop-filter: blur(22px);
+  backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
 }
 
@@ -333,7 +334,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(8, 18, 31, 0.54);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
 }
 
@@ -411,7 +412,7 @@ h3 {
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
 
@@ -434,7 +435,7 @@ h3 {
   border-radius: 22px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
 
@@ -468,7 +469,7 @@ h3 {
   border-radius: 44px;
   background:
     conic-gradient(from 130deg, rgba(255, 111, 145, 0.16), rgba(88, 240, 200, 0.16), rgba(246, 184, 95, 0.14), rgba(184, 148, 255, 0.16), rgba(255, 111, 145, 0.16));
-  filter: blur(22px);
+  filter: blur(12px);
   animation: chromaPulse 8s ease-in-out infinite;
 }
 
@@ -525,13 +526,13 @@ h3 {
 
 .stage-main {
   inset: 30px 0 0 88px;
-  animation: portraitBreathe 9s ease-in-out infinite;
+  animation: portraitBreathe 12s ease-in-out infinite;
 }
 
 .stage-side {
   width: 210px;
   height: 250px;
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(10px);
 }
 
 .stage-side-top {
@@ -574,6 +575,8 @@ h3 {
 
 .section {
   padding-top: 90px;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 .section-head {
@@ -612,7 +615,7 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--shadow);
   transform: rotate(var(--tilt, -2deg));
-  animation: reelFloat 7s ease-in-out infinite;
+  animation: reelFloat 9s ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
 
@@ -717,7 +720,7 @@ h3 {
   border-radius: 26px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
-  animation: orbitFloat 7s ease-in-out infinite;
+  animation: orbitFloat 10s ease-in-out infinite;
 }
 
 .orbit-photo img {
@@ -793,7 +796,7 @@ h3 {
 .dream-card {
   border: 1px solid var(--line);
   background: var(--surface);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
 }
 
@@ -909,8 +912,6 @@ h3 {
   transform-style: preserve-3d;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
   isolation: isolate;
-  animation: cardDrift 8s ease-in-out infinite;
-  animation-delay: calc(var(--card-index, 0) * -0.7s);
 }
 
 .memory-card::before {
@@ -973,6 +974,11 @@ h3 {
   transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 280ms ease;
   filter: saturate(1.02) contrast(1.02);
   will-change: transform;
+}
+
+.memory-card.visible {
+  animation: cardDrift 9s ease-in-out infinite;
+  animation-delay: calc(var(--card-index, 0) * -0.45s);
 }
 
 .memory-card:nth-child(1) {
@@ -1441,6 +1447,33 @@ h3 {
 }
 
 @media (max-width: 780px) {
+  .aurora-field,
+  .ambient,
+  .stage-ring {
+    display: none;
+  }
+
+  .marquee-track,
+  .marquee-card,
+  .orbit-photo,
+  .stage-main,
+  .memory-card.visible {
+    animation-duration: 18s;
+  }
+
+  .intro-panel,
+  .topbar,
+  .hero-quote,
+  .honor-item,
+  .stage-side,
+  .tribute-card,
+  .memory-card,
+  .letter-panel,
+  .dream-card,
+  .lightbox {
+    backdrop-filter: none;
+  }
+
   .page-shell {
     width: min(calc(100% - 20px), var(--max-width));
     padding-top: 18px;

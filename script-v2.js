@@ -16,6 +16,8 @@ const surpriseVideo = document.getElementById("surpriseVideo");
 const videoFallback = document.getElementById("videoFallback");
 const starfield = document.getElementById("starfield");
 const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canUseRichMotion = !motionReduced && window.matchMedia("(pointer: fine) and (min-width: 781px)").matches;
+let spotlightFrame = 0;
 
 todayBadge.textContent = "Friday, 1 May 2026";
 
@@ -26,14 +28,21 @@ function setSpotlightPosition(x, y) {
 
 setSpotlightPosition(window.innerWidth * 0.5, window.innerHeight * 0.2);
 
-if (!motionReduced) {
+if (canUseRichMotion) {
   window.addEventListener("pointermove", (event) => {
-    setSpotlightPosition(event.clientX, event.clientY);
+    if (spotlightFrame) {
+      return;
+    }
+
+    spotlightFrame = requestAnimationFrame(() => {
+      setSpotlightPosition(event.clientX, event.clientY);
+      spotlightFrame = 0;
+    });
   });
 }
 
 if (starfield && !motionReduced) {
-  const totalStars = 26;
+  const totalStars = canUseRichMotion ? 16 : 8;
 
   for (let index = 0; index < totalStars; index += 1) {
     const star = document.createElement("span");
@@ -48,12 +57,14 @@ if (starfield && !motionReduced) {
 
 const confettiColors = ["#f6b85f", "#ffe0a3", "#78ddff", "#ff6f91", "#58f0c8", "#b894ff", "#ffffff"];
 
-function launchConfetti(total = 70) {
+function launchConfetti(total = 36) {
   if (motionReduced) {
     return;
   }
 
-  for (let index = 0; index < total; index += 1) {
+  const cappedTotal = Math.min(total, canUseRichMotion ? 42 : 18);
+
+  for (let index = 0; index < cappedTotal; index += 1) {
     const confetti = document.createElement("span");
     confetti.className = "confetti";
     confetti.style.left = `${Math.random() * 100}%`;
@@ -66,18 +77,20 @@ function launchConfetti(total = 70) {
     confetti.style.setProperty("--drift", `${-140 + Math.random() * 280}px`);
     confettiLayer.appendChild(confetti);
 
-    window.setTimeout(() => confetti.remove(), 7600);
+    window.setTimeout(() => confetti.remove(), 4600);
   }
 }
 
-function launchSparkles(x, y, total = 18) {
+function launchSparkles(x, y, total = 10) {
   if (motionReduced || !confettiLayer) {
     return;
   }
 
-  for (let index = 0; index < total; index += 1) {
+  const cappedTotal = Math.min(total, canUseRichMotion ? 12 : 6);
+
+  for (let index = 0; index < cappedTotal; index += 1) {
     const sparkle = document.createElement("span");
-    const angle = (Math.PI * 2 * index) / total;
+    const angle = (Math.PI * 2 * index) / cappedTotal;
     const distance = 50 + Math.random() * 90;
 
     sparkle.className = "confetti sparkle";
@@ -115,7 +128,7 @@ function unlockExperience(targetId) {
     });
   }, 220);
 
-  launchConfetti(90);
+  launchConfetti(36);
 }
 
 introTriggers.forEach((trigger) => {
@@ -126,7 +139,7 @@ introTriggers.forEach((trigger) => {
 
 document.querySelectorAll(".button").forEach((button) => {
   button.addEventListener("pointerdown", (event) => {
-    launchSparkles(event.clientX, event.clientY, 14);
+    launchSparkles(event.clientX, event.clientY, 8);
   });
 });
 
@@ -146,7 +159,7 @@ revealItems.forEach((item) => observer.observe(item));
 
 tiltCards.forEach((card) => {
   card.addEventListener("pointermove", (event) => {
-    if (motionReduced) {
+    if (!canUseRichMotion) {
       return;
     }
 
@@ -174,7 +187,7 @@ function openLightbox(trigger) {
   lightbox.classList.add("is-open");
   lightbox.setAttribute("aria-hidden", "false");
   body.classList.add("is-locked");
-  launchSparkles(window.innerWidth / 2, window.innerHeight / 2, 26);
+  launchSparkles(window.innerWidth / 2, window.innerHeight / 2, 10);
 }
 
 function closeLightbox() {
@@ -206,6 +219,7 @@ function revealVideoSurprise() {
   }
 
   videoFrame.hidden = false;
+  surpriseVideo?.load();
   videoFrame.scrollIntoView({
     behavior: motionReduced ? "auto" : "smooth",
     block: "start",
@@ -232,7 +246,7 @@ if (surpriseVideo) {
 
 videoRevealButton?.addEventListener("click", () => {
   revealVideoSurprise();
-  launchConfetti(80);
+  launchConfetti(30);
 });
 
 document.addEventListener("keydown", (event) => {
