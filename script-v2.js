@@ -46,7 +46,7 @@ if (starfield && !motionReduced) {
   }
 }
 
-const confettiColors = ["#ebb96d", "#f5d9a6", "#8db9f7", "#ffffff"];
+const confettiColors = ["#f6b85f", "#ffe0a3", "#78ddff", "#ff6f91", "#58f0c8", "#b894ff", "#ffffff"];
 
 function launchConfetti(total = 70) {
   if (motionReduced) {
@@ -58,6 +58,9 @@ function launchConfetti(total = 70) {
     confetti.className = "confetti";
     confetti.style.left = `${Math.random() * 100}%`;
     confetti.style.background = confettiColors[index % confettiColors.length];
+    confetti.style.width = `${8 + Math.random() * 10}px`;
+    confetti.style.height = `${10 + Math.random() * 18}px`;
+    confetti.style.setProperty("--confetti-radius", index % 4 === 0 ? "999px" : "4px");
     confetti.style.animationDuration = `${3.8 + Math.random() * 2.8}s`;
     confetti.style.animationDelay = `${Math.random() * 0.5}s`;
     confetti.style.setProperty("--drift", `${-140 + Math.random() * 280}px`);
@@ -67,12 +70,46 @@ function launchConfetti(total = 70) {
   }
 }
 
+function launchSparkles(x, y, total = 18) {
+  if (motionReduced || !confettiLayer) {
+    return;
+  }
+
+  for (let index = 0; index < total; index += 1) {
+    const sparkle = document.createElement("span");
+    const angle = (Math.PI * 2 * index) / total;
+    const distance = 50 + Math.random() * 90;
+
+    sparkle.className = "confetti sparkle";
+    sparkle.style.left = `${x}px`;
+    sparkle.style.top = `${y}px`;
+    sparkle.style.width = `${5 + Math.random() * 6}px`;
+    sparkle.style.height = `${5 + Math.random() * 6}px`;
+    sparkle.style.background = confettiColors[index % confettiColors.length];
+    sparkle.style.animation = "none";
+    sparkle.style.transform = "translate(-50%, -50%) scale(1)";
+    sparkle.style.transition = "transform 720ms ease, opacity 720ms ease";
+    sparkle.style.setProperty("--confetti-radius", "999px");
+    confettiLayer.appendChild(sparkle);
+
+    requestAnimationFrame(() => {
+      sparkle.style.opacity = "0";
+      sparkle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0.1)`;
+    });
+
+    window.setTimeout(() => sparkle.remove(), 820);
+  }
+}
+
 function unlockExperience(targetId) {
   introScreen.classList.add("is-hidden");
   body.classList.remove("is-locked");
 
   window.setTimeout(() => {
-    document.getElementById(targetId)?.scrollIntoView({
+    const target = document.getElementById(targetId);
+    target?.classList.add("visible");
+    target?.querySelectorAll(".reveal").forEach((item) => item.classList.add("visible"));
+    target?.scrollIntoView({
       behavior: motionReduced ? "auto" : "smooth",
       block: "start",
     });
@@ -84,6 +121,12 @@ function unlockExperience(targetId) {
 introTriggers.forEach((trigger) => {
   trigger.addEventListener("click", () => {
     unlockExperience(trigger.dataset.target);
+  });
+});
+
+document.querySelectorAll(".button").forEach((button) => {
+  button.addEventListener("pointerdown", (event) => {
+    launchSparkles(event.clientX, event.clientY, 14);
   });
 });
 
@@ -113,6 +156,8 @@ tiltCards.forEach((card) => {
     const rotateY = ((offsetX / bounds.width) - 0.5) * 8;
     const rotateX = ((offsetY / bounds.height) - 0.5) * -8;
 
+    card.style.setProperty("--mx", `${(offsetX / bounds.width) * 100}%`);
+    card.style.setProperty("--my", `${(offsetY / bounds.height) * 100}%`);
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
   });
 
@@ -129,6 +174,7 @@ function openLightbox(trigger) {
   lightbox.classList.add("is-open");
   lightbox.setAttribute("aria-hidden", "false");
   body.classList.add("is-locked");
+  launchSparkles(window.innerWidth / 2, window.innerHeight / 2, 26);
 }
 
 function closeLightbox() {
